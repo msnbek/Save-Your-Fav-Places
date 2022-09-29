@@ -13,13 +13,14 @@ import CoreData
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameTextField: UITextField!
+    
     @IBOutlet weak var commentTextField: UITextField!
-    var choosenLatitude : Double
-    var choosenLongtude : Double
+    var choosenLatitude = Double()
+    var choosenLongtude = Double()
     var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-       // navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.
+        
         mapView.delegate = self
         
         locationManager.delegate = self
@@ -44,6 +45,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotation.title = nameTextField.text
             annotation.subtitle = commentTextField.text
             self.mapView.addAnnotation(annotation)
+            
+            if (nameTextField.text!) == "" {
+                
+                
+            }
         }
         
     }
@@ -63,18 +69,27 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         let newLocations = NSEntityDescription.insertNewObject(forEntityName: "Locations", into: context)
         
-        newLocations.setValue(nameTextField.text, forKey: "name")
-        newLocations.setValue(commentTextField, forKey: "comment")
+ 
+        newLocations.setValue(commentTextField.text, forKey: "comment")
         if nameTextField.text == "" {
             let alert = UIAlertController(title: "Empty Section!", message: "Please write location information.", preferredStyle: UIAlertController.Style.alert)
             let okButton = UIAlertAction(title: "OK!", style: UIAlertAction.Style.default, handler: nil)
             alert.addAction(okButton)
             self.present(alert, animated: true)
+        }else {
+            newLocations.setValue(nameTextField.text, forKey: "name")
+            
         }
-        
         newLocations.setValue(choosenLatitude, forKey: "latitude")
         newLocations.setValue(choosenLongtude, forKey: "longtude")
         newLocations.setValue(UUID(), forKey: "id")
+        
+        do {
+            try context.save()
+            print("saved")
+        }catch {
+            print("error")
+        }
         
     
         

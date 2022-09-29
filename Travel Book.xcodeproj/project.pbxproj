@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED7DB48028E63CCC00D372F8 /* toMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7DB47F28E63CCC00D372F8 /* toMapViewController.swift */; };
 		EDC7FB9F28E5DEFA00734A1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7FB9E28E5DEFA00734A1D /* AppDelegate.swift */; };
 		EDC7FBA128E5DEFA00734A1D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7FBA028E5DEFA00734A1D /* SceneDelegate.swift */; };
 		EDC7FBA328E5DEFA00734A1D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC7FBA228E5DEFA00734A1D /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED7DB47F28E63CCC00D372F8 /* toMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toMapViewController.swift; sourceTree = "<group>"; };
 		EDC7FB9B28E5DEFA00734A1D /* Travel Book.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Travel Book.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDC7FB9E28E5DEFA00734A1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDC7FBA028E5DEFA00734A1D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				EDC7FB9E28E5DEFA00734A1D /* AppDelegate.swift */,
 				EDC7FBA028E5DEFA00734A1D /* SceneDelegate.swift */,
 				EDC7FBA228E5DEFA00734A1D /* ViewController.swift */,
+				ED7DB47F28E63CCC00D372F8 /* toMapViewController.swift */,
 				EDC7FBA428E5DEFA00734A1D /* Main.storyboard */,
 				EDC7FBAA28E5DEFD00734A1D /* Assets.xcassets */,
 				EDC7FBAC28E5DEFD00734A1D /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 				EDC7FBA328E5DEFA00734A1D /* ViewController.swift in Sources */,
 				EDC7FB9F28E5DEFA00734A1D /* AppDelegate.swift in Sources */,
 				EDC7FBA128E5DEFA00734A1D /* SceneDelegate.swift in Sources */,
+				ED7DB48028E63CCC00D372F8 /* toMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
