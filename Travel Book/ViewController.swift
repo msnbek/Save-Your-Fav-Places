@@ -34,6 +34,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
+        let gestureRecognizeForKeyboard = UITapGestureRecognizer(target: self, action: #selector(hiddenKeyboard))
+        view.addGestureRecognizer(gestureRecognizeForKeyboard)
+        
         let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(tappedMap(gestureRecognizer:)))
         gestureRecognizer.minimumPressDuration = 1.5
         mapView.addGestureRecognizer(gestureRecognizer)
@@ -91,6 +94,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
+    @objc func hiddenKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc func tappedMap(gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .began {
             if nameTextField.text == "" {
@@ -145,6 +152,35 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             pinView?.annotation = annotation
         }
         return pinView
+    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if choosenName != "" {
+            
+            let requestLocation = CLLocation(latitude: annotationLatitude, longitude: annotationLongitude)
+            
+            
+            CLGeocoder().reverseGeocodeLocation(requestLocation) { (placemarks, error) in
+                //closure
+                
+                if let placemark = placemarks {
+                    if placemark.count > 0 {
+                                      
+                        let newPlacemark = MKPlacemark(placemark: placemark[0])
+                        let item = MKMapItem(placemark: newPlacemark)
+                        item.name = self.annotationName
+                        let launchOptions = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+                        item.openInMaps(launchOptions: launchOptions)
+                                      
+                }
+            }
+        }
+            
+            
+        }
+    
+    
+    
+    
     }
     
     
